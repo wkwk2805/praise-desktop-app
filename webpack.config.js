@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin"); // index.html 파일�
 module.exports = {
   // moduel export (옛날 방식..)
   entry: "./src/index.js", // 리액트 파일이 시작하는 곳
-  mode: "development",
+  mode: "production",
   output: {
     // bundled compiled 파일
     path: path.join(__dirname, "/dist"), //__dirname : 현재 디렉토리, dist 폴더에 모든 컴파일된 하나의 번들파일을 넣을 예정
