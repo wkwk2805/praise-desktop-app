@@ -1,20 +1,63 @@
 import React from "react";
-import { Grid, Image } from "semantic-ui-react";
-import path from "path";
-
+import { Grid } from "semantic-ui-react";
+import LyricsSegment from "./LyricsSegment";
 const ViewContent = () => (
-  <Grid container columns={3} style={{ marginTop: "20px" }}>
-    <Grid.Column>
-      <Image src="../public/image.png" />
-      안녕하세요
-    </Grid.Column>
-    <Grid.Column>
-      <Image src="../public/image.png" />
-      안녕하세요
-    </Grid.Column>
-    <Grid.Column>
-      <Image src="../public/image.png" />
-    </Grid.Column>
+  <Grid container columns={3}>
+    <Grid.Row className="pd5">
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title1" content="content1" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title2" content="content2" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title3" content="content3" />
+      </Grid.Column>
+    </Grid.Row>
+    <Grid.Row className="pd5">
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title1" content="content1" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title2" content="content2" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title3" content="content3" />
+      </Grid.Column>
+    </Grid.Row>
+    <Grid.Row className="pd5">
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title1" content="content1" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title2" content="content2" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title3" content="content3" />
+      </Grid.Column>
+    </Grid.Row>
+    <Grid.Row className="pd5">
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title1" content="content1" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title2" content="content2" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title3" content="content3" />
+      </Grid.Column>
+    </Grid.Row>
+    <Grid.Row className="pd5">
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title1" content="content1" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title2" content="content2" />
+      </Grid.Column>
+      <Grid.Column className="pd5">
+        <LyricsSegment title="Title3" content="content3" />
+      </Grid.Column>
+    </Grid.Row>
   </Grid>
 );
 
