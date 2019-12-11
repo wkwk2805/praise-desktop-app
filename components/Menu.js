@@ -9,10 +9,7 @@ const Menu = () => {
         <Button>Home</Button>
       </Link>
       <Link to="/searchList">
-        <Button>목록</Button>
-      </Link>
-      <Link to="/checkViewList">
-        <Button>PPT</Button>
+        <Button>List</Button>
       </Link>
     </div>
   );
