@@ -9,3 +9,14 @@ div.sticky {
   position: sticky;
   top: 0;
 }
+
+.removeIcon {
+  padding: 0px 3px 2px 3px !important;
+  margin-left: 4px !important;
+  border-radius: 2px !important;
+}
+
+.removeIcon:active {
+  background-color: orange !important;
+  color: white !important;
+}

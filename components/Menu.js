@@ -11,6 +11,9 @@ const Menu = () => {
       <Link to="/searchList">
         <Button>List</Button>
       </Link>
+      <Link to="/submitLyrics">
+        <Button>Submit</Button>
+      </Link>
     </div>
   );
 };

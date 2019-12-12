@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import Menu from "./Menu";
 import { Container } from "semantic-ui-react";
 import SearchList from "./SearchList";
+import SubmitLyrics from "./SubmitLyrics";
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       <Router>
         <Menu />
         <Route exact path="/" component={Search} />
-        <Route exact path="/searchList" component={SearchList} />
+        <Route path="/searchList" component={SearchList} />
+        <Route path="/submitLyrics" component={SubmitLyrics} />
       </Router>
     </Container>
   );

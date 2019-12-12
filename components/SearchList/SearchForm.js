@@ -9,7 +9,9 @@ const SearchForm = () => {
         <Header as="h1">찬양을 검색해 주세요</Header>
         <input placeholder="검색..." />
       </Form.Field>
-      <Button type="submit">검색</Button>
+      <Form.Field style={{ textAlign: "right" }}>
+        <Button type="submit">검색</Button>
+      </Form.Field>
     </Form>
   );
 };
