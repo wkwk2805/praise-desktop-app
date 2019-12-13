@@ -1,14 +1,15 @@
 // lowdb 호출
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-const Apply = require("./Apply");
+import Apply from "./Apply";
+import low from "lowdb";
+import FileSync from "lowdb/adapters/FileSync";
+
+const adapter = new FileSync("lyrics.json");
+const DB = low(adapter);
+
+// 일단생성
+DB.defaults({ lyrics: [] }).write();
 
 class DataBase {
-  create() {
-    const adapter = new FileSync("lyrics.json");
-    const DB = low(adapter);
-    DB.defaults({ lyrics: [] }).write();
-  }
   insert(data) {
     try {
       const apply = new Apply(DB);
@@ -47,7 +48,7 @@ class DataBase {
   }
 }
 
-module.exports = DataBase;
+export default DataBase;
 
 /*
 json 형태

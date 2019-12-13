@@ -9,7 +9,7 @@ class Apply {
     const arr = [];
     strArr.forEach((item, i) => {
       const obj = {};
-      obj.paragraph = i;
+      obj.paragraph = ++i;
       obj.statement = item;
       arr.push(obj);
     });
@@ -28,9 +28,9 @@ class Apply {
   getInsertData(param) {
     const insertData = Object.assign(param, {});
     insertData["id"] = this.getNextId(this.DB);
-    insertData["contents"] = this.processContent(param.contents);
+    insertData["content"] = this.processContent(param.content);
     return insertData;
   }
 }
 
-module.exports = Apply;
+export default Apply;
