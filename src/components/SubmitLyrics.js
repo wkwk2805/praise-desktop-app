@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input, TextArea, Form, Header } from "semantic-ui-react";
 import DataBase from "../utility/DataBase";
+import { alertDialog } from "../utility/CustomDialog";
 
 const SubmitLyrics = () => {
   const [insertData, setInsertData] = useState({});
@@ -8,6 +9,7 @@ const SubmitLyrics = () => {
     setInsertData({ ...insertData, [e.target.name]: e.target.value });
   };
   const _submit = () => {
+    console.log(alertDialog);
     if (!insertData.title || insertData.title.replace(/ /gi, "") === "") {
       alertDialog("제목이 없어요 ㅠㅠ");
       return;
