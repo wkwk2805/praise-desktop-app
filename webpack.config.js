@@ -45,6 +45,7 @@ module.exports = {
     modules: [path.join(__dirname, "src"), "node_modules"],
     extensions: [".js", ".jsx", ".css", ".scss", ".json"]
   },
+  target: "node",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html" // 생성한 템플릿 파일
