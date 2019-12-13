@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input, TextArea, Form, Header } from "semantic-ui-react";
 import DataBase from "../utility/DataBase";
-import CustomDialog from "../utility/CustomDialog";
-new CustomDialog();
 
 const SubmitLyrics = () => {
   const [insertData, setInsertData] = useState({});
@@ -11,16 +9,16 @@ const SubmitLyrics = () => {
   };
   const _submit = () => {
     if (!insertData.title || insertData.title.replace(/ /gi, "") === "") {
-      alert("제목이 없어요 ㅠㅠ");
+      alertDialog("제목이 없어요 ㅠㅠ");
       return;
     }
     if (!insertData.content || insertData.content.replace(/ /gi, "") === "") {
-      alert("내용이 없어요 ㅠㅠ");
+      alertDialog("내용이 없어요 ㅠㅠ");
       return;
     }
     const DB = new DataBase();
     if (DB.insert(insertData)) {
-      alert("데이터가 잘 들어갔어요");
+      alertDialog("데이터가 잘 들어갔어요");
       location.reload();
     }
   };
