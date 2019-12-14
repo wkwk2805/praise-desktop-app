@@ -31,6 +31,12 @@ class Apply {
     insertData["content"] = this.processContent(param.content);
     return insertData;
   }
+  // 파일 가공
+  processFile(file) {
+    file.name = "";
+    file.id = ""; // 이름 + 시간 악보이름.jpg_201121411161011
+    // 파일 업로드(fs.writeSync();) 사용
+  }
 }
 
 export default Apply;
