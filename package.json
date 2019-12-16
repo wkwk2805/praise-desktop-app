@@ -19,6 +19,7 @@
     "start": "webpack ./src/index.js && electron ./"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.7.0",
     "electron": "^7.1.4",
     "lowdb": "^1.0.0",
     "react": "^16.12.0",

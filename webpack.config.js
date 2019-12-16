@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin"); // index.html 파일�
 
 module.exports = {
   // moduel export (옛날 방식..)
-  entry: "./src/index.js", // 리액트 파일이 시작하는 곳
+  entry: ["./src/index.js"], // 리액트 파일이 시작하는 곳
   mode: "production",
   output: {
     // bundled compiled 파일

@@ -10,10 +10,10 @@ const DB = low(adapter);
 DB.defaults({ lyrics: [] }).write();
 
 class DataBase {
-  insert(data) {
+  async insert(data, fileInfo) {
     try {
       const apply = new Apply(DB);
-      const insertData = apply.getInsertData(data);
+      const insertData = await apply.getInsertData(data, fileInfo);
       DB.get("lyrics")
         .push(insertData)
         .write();

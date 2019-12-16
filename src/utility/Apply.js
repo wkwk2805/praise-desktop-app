@@ -1,3 +1,5 @@
+import fs from "fs";
+
 class Apply {
   constructor(DB) {
     this.DB = DB;
@@ -25,17 +27,26 @@ class Apply {
     return ++id;
   }
   // insert할 데이터 가져오기
-  getInsertData(param) {
+  async getInsertData(param, fileInfo) {
     const insertData = Object.assign(param, {});
     insertData["id"] = this.getNextId(this.DB);
     insertData["content"] = this.processContent(param.content);
+    fileInfo && (insertData["file"] = await this.processFile(fileInfo));
     return insertData;
   }
   // 파일 가공
-  processFile(file) {
-    file.name = "";
-    file.id = ""; // 이름 + 시간 악보이름.jpg_201121411161011
-    // 파일 업로드(fs.writeSync();) 사용
+  async processFile(fileInfo) {
+    const file = {};
+    file["name"] = Object.assign(fileInfo.name, "");
+    file["path"] =
+      "./public/" +
+      new Date().getTime() +
+      "_" +
+      fileInfo.name.replace(/ /gi, "");
+    file["size"] = Math.ceil(fileInfo.size / 1024) + "KB";
+    const buffer = await fileInfo.arrayBuffer();
+    fs.writeFileSync(file.path, Buffer.from(buffer), "binary");
+    return file;
   }
 }
 

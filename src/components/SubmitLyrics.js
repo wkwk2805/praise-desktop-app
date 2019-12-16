@@ -1,15 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Button, Input, TextArea, Form, Header } from "semantic-ui-react";
 import DataBase from "../utility/DataBase";
 import { alertDialog } from "../utility/CustomDialog";
 
 const SubmitLyrics = () => {
-  const fileRef = useRef();
   const [insertData, setInsertData] = useState({});
   const onChangeData = e => {
     setInsertData({ ...insertData, [e.target.name]: e.target.value });
   };
-  const _submit = () => {
+  const _submit = async () => {
     if (!insertData.title || insertData.title.replace(/ /gi, "") === "") {
       alertDialog("제목이 없어요 ㅠㅠ");
       return;
@@ -19,9 +18,10 @@ const SubmitLyrics = () => {
       return;
     }
     const DB = new DataBase();
-    if (DB.insert(insertData)) {
+    const file = document.getElementsByName("file")[0];
+    const fileInfo = file && file.files[0];
+    if (await DB.insert(insertData, fileInfo)) {
       alertDialog("데이터가 잘 들어갔어요");
-      const fileInfo = document.getElementsByName("file")[0].files[0]; // 이렇게 해서 파일을 사용 arrayBuffer / Blob
       location.reload();
     }
   };
