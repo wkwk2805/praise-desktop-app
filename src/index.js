@@ -4,6 +4,15 @@ import App from "./components/App";
 import "semantic-ui-css/semantic.min.css";
 import "./layout.css";
 import "@babel/polyfill";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./store/reducer";
+const store = createStore(rootReducer);
 
 // index.html 에 작성한 ID 값
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

@@ -20,3 +20,8 @@ div.sticky {
   background-color: orange !important;
   color: white !important;
 }
+
+.cell:hover {
+  border: solid 1px orange;
+  cursor: pointer;
+}

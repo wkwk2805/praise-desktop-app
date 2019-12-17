@@ -46,12 +46,17 @@ class DataBase {
       return false;
     }
   }
-  selectAll(){
+  selectAll() {
     try {
-      return DB.get('lyrics').value();
+      return DB.get("lyrics").value();
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
+  }
+  selectIdList(arrayId) {
+    return DB.get("lyrics")
+      .filter(e => arrayId.filter(e2 => e2 === e.id))
+      .value();
   }
 }
 
