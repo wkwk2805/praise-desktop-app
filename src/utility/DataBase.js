@@ -46,6 +46,13 @@ class DataBase {
       return false;
     }
   }
+  selectAll(){
+    try {
+      return DB.get('lyrics').value();
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 export default DataBase;

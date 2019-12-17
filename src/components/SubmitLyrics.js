@@ -5,10 +5,11 @@ import { alertDialog } from "../utility/CustomDialog";
 
 const SubmitLyrics = () => {
   const [insertData, setInsertData] = useState({});
-  const onChangeData = e => {
+  const settingData = e => {
     setInsertData({ ...insertData, [e.target.name]: e.target.value });
   };
   const _submit = async () => {
+    // validation check
     if (!insertData.title || insertData.title.replace(/ /gi, "") === "") {
       alertDialog("제목이 없어요 ㅠㅠ");
       return;
@@ -20,6 +21,11 @@ const SubmitLyrics = () => {
     const DB = new DataBase();
     const file = document.getElementsByName("file")[0];
     const fileInfo = file && file.files[0];
+    if(fileInfo && fileInfo.type.indexOf('image') === -1){
+      alertDialog("파일은 이미지파일만 가능해요 ㅠㅠ")
+      return;
+    }
+    // insert Data
     if (await DB.insert(insertData, fileInfo)) {
       alertDialog("데이터가 잘 들어갔어요");
       location.reload();
@@ -33,7 +39,7 @@ const SubmitLyrics = () => {
           type="text"
           name="title"
           placeholder="제목을 입력해 주세요"
-          onChange={onChangeData}
+          onChange={settingData}
         />
       </Form.Field>
       <Form.Field>
@@ -42,11 +48,11 @@ const SubmitLyrics = () => {
           name="content"
           cols="30"
           rows="15"
-          onChange={onChangeData}
+          onChange={settingData}
         />
       </Form.Field>
       <Form.Field>
-        <Input type="file" name="file" onChange={onChangeData} />
+        <Input type="file" name="file" onChange={settingData} />
       </Form.Field>
       <Form.Field style={{ textAlign: "right" }}>
         <Button onClick={_submit}>등록</Button>

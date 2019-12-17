@@ -39,7 +39,7 @@ class Apply {
     const file = {};
     file["name"] = Object.assign(fileInfo.name, "");
     file["path"] =
-      "./public/" +
+      "../public/" +
       new Date().getTime() +
       "_" +
       fileInfo.name.replace(/ /gi, "");

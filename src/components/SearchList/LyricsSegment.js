@@ -1,10 +1,10 @@
 import React from "react";
 import { Image, Segment, Comment, Header } from "semantic-ui-react";
 
-const LyricsSegment = ({ title, content }) => {
+const LyricsSegment = ({ path, title, content }) => {
   return (
     <Segment className="pd5">
-      <Image src="../public/image.png" />
+      <Image src={path ? "." + path : "../public/image.png"} />
       <Comment>
         <Comment.Content>
           <Header as="h4" className="mg5">
