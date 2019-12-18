@@ -25,3 +25,8 @@ div.sticky {
   border: solid 1px orange;
   cursor: pointer;
 }
+
+.cell-active {
+  border: solid 1px orange;
+  cursor: pointer;
+}

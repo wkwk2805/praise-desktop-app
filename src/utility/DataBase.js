@@ -54,9 +54,13 @@ class DataBase {
     }
   }
   selectIdList(arrayId) {
-    return DB.get("lyrics")
-      .filter(e => arrayId.filter(e2 => e2 === e.id))
-      .value();
+    try {
+      return DB.get("lyrics")
+        .filter(e => arrayId.filter(e2 => e2 === e.id))
+        .value();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

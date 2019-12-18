@@ -12,6 +12,7 @@ const ViewContent = ({ state, columns }) => {
             {idx % columns === 0 && ReactHtmlParser('<div class="row pd5">')}
             <Grid.Column key={idx} className="pd5">
               <LyricsSegment
+                id={item.id}
                 path={item.file && item.file.path}
                 title={item.title}
                 content={item.content[0].statement}

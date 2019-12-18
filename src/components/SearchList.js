@@ -9,13 +9,7 @@ const SearchList = () => {
   const [state, setState] = useState([]);
   const [columns, setColumns] = useState(3);
   const [width, setWidth] = useState(12);
-  useEffect(() => {
-    const DB = new DataBase();
-    const data = DB.selectAll();
-    setState(data);
-  }, []);
-  useEffect(() => {
-    let wid = window.innerWidth;
+  const viewHandler = wid => {
     if (wid > 1200) {
       setColumns(5);
       setWidth(13);
@@ -26,18 +20,18 @@ const SearchList = () => {
       setColumns(3);
       setWidth(12);
     }
+  };
+  useEffect(() => {
+    const DB = new DataBase();
+    const data = DB.selectAll();
+    setState(data);
+  }, []);
+  useEffect(() => {
+    let wid = window.innerWidth;
+    viewHandler(wid);
     window.onresize = function() {
       wid = this.innerWidth;
-      if (wid > 1200) {
-        setColumns(5);
-        setWidth(13);
-      } else if (wid > 990) {
-        setColumns(4);
-        setWidth(12);
-      } else {
-        setColumns(3);
-        setWidth(12);
-      }
+      viewHandler(wid);
     };
   }, []);
   return (
