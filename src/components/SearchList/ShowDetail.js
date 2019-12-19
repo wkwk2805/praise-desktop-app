@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, Image, Header } from "semantic-ui-react";
 import DataBase from "../../utility/DataBase";
+import ReactHtmlParser from "react-html-parser";
+
 const DB = new DataBase();
 const ShowDetail = ({ cont, id }) => {
   const [info, setInfo] = useState({});
@@ -26,10 +28,12 @@ const ShowDetail = ({ cont, id }) => {
           src={(info.file && info.file.path) || "../public/image.png"}
         />
         <Modal.Description>
-          <Header as="h4">입력창 사이즈 변경 가능</Header>
-          <textarea style={{ width: "300px", height: "217px" }}>
-            {info.content && info.content.map(e => e.statement).join("\n\n")}
-          </textarea>
+          {info.content &&
+            ReactHtmlParser(
+              info.content
+                .map(e => e.statement.replace("\n", "<br/>"))
+                .join("<p/><p/>")
+            )}
         </Modal.Description>
       </Modal.Content>
     </Modal>
