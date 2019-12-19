@@ -27,6 +27,6 @@ div.sticky {
 }
 
 .cell-active {
-  border: solid 1px orange;
+  border: solid 2px yellow !important;
   cursor: pointer;
 }

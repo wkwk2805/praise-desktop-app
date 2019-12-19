@@ -55,12 +55,19 @@ class DataBase {
   }
   selectIdList(arrayId) {
     try {
-      return DB.get("lyrics")
-        .filter(e => arrayId.filter(e2 => e2 === e.id))
+      const result = DB.get("lyrics")
+        .filter(e => arrayId.includes(e.id))
         .value();
+      return result;
     } catch (error) {
       console.error(error);
     }
+  }
+  selectDetail(id) {
+    const result = DB.get("lyrics")
+      .find(e => e.id === id)
+      .value();
+    return result;
   }
 }
 

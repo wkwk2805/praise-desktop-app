@@ -35,9 +35,13 @@ const LyricsList = () => {
             );
           })}
         </List>
-        <Header as="h5">다운로드</Header>
-        <Button>악보</Button>
-        <Button>PPT</Button>
+        {items.length > 0 && (
+          <div>
+            <Header as="h5">다운로드</Header>
+            <Button>악보</Button>
+            <Button>PPT</Button>
+          </div>
+        )}
       </Segment>
     </div>
   );

@@ -1,9 +1,12 @@
 import React from "react";
 import { Image, Segment, Comment, Header, Button } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { _checked, _unchecked } from "../../store/checked";
+import ShowDetail from "./ShowDetail";
 
 const LyricsSegment = ({ id, path, title, content }) => {
   const checked = useSelector(state => state.checked);
+  const dispatch = useDispatch();
   const shortContent = content => {
     if (content && content.length > 10) {
       return content.substring(0, 10) + "...";
@@ -11,8 +14,22 @@ const LyricsSegment = ({ id, path, title, content }) => {
       return content;
     }
   };
+  const showDetail = e => {
+    e.stopPropagation();
+  };
+  const remove = e => {
+    e.stopPropagation();
+    console.log("remove");
+  };
   return (
-    <Segment className={checked.includes(id) ? `pd5 cell-active` : `pd5 cell`}>
+    <Segment
+      className={checked.includes(id) ? `pd5 cell-active` : `pd5 cell`}
+      onClick={() => {
+        checked.includes(id)
+          ? dispatch(_unchecked(id))
+          : dispatch(_checked(id));
+      }}
+    >
       <Image src={path ? path : "../public/image.png"} />
       <Comment>
         <Comment.Content>
@@ -23,8 +40,10 @@ const LyricsSegment = ({ id, path, title, content }) => {
         </Comment.Content>
       </Comment>
       <div style={{ textAlign: "center" }}>
-        <Button color="teal">수정</Button>
-        <Button color="red">삭제</Button>
+        <ShowDetail cont="상세" id={id} />
+        <Button color="red" onClick={e => remove(e)}>
+          삭제
+        </Button>
       </div>
     </Segment>
   );

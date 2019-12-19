@@ -15,8 +15,7 @@ const initialState = [];
 const checked = (state = initialState, action) => {
   switch (action.type) {
     case CHECKED:
-      state.checked.push(action.id);
-      return state;
+      return state.concat(action.id);
     case UNCHECKED:
       let copyState = Object.assign(state, {});
       copyState = copyState.filter(e => e !== action.id);
