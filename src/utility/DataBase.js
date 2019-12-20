@@ -23,11 +23,18 @@ class DataBase {
       return false;
     }
   }
-  update(id) {
+  async update(id, data, newFileInfo, oldFilePath) {
     try {
+      const apply = new Apply(DB);
+      const updateData = await apply.getUpdateData(
+        id,
+        data,
+        newFileInfo,
+        oldFilePath
+      );
       DB.get("lyrics")
         .find({ id: id })
-        .assign({ [changeKey]: changeValue })
+        .assign(updateData)
         .write();
       return true;
     } catch (e) {

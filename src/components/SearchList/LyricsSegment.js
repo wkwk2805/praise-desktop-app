@@ -14,9 +14,6 @@ const LyricsSegment = ({ id, path, title, content }) => {
       return content;
     }
   };
-  const showDetail = e => {
-    e.stopPropagation();
-  };
   const remove = e => {
     e.stopPropagation();
     console.log("remove");
@@ -30,7 +27,7 @@ const LyricsSegment = ({ id, path, title, content }) => {
           : dispatch(_checked(id));
       }}
     >
-      <Image src={path ? path : "../public/image.png"} />
+      <Image src={path ? "." + path : "../public/image.png"} />
       <Comment>
         <Comment.Content>
           <Header as="h4" className="mg5">

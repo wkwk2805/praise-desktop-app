@@ -39,7 +39,7 @@ class Apply {
     const file = {};
     file["name"] = Object.assign(fileInfo.name, "");
     file["path"] =
-      "../public/" +
+      "./public/" +
       new Date().getTime() +
       "_" +
       fileInfo.name.replace(/ /gi, "");
@@ -47,6 +47,18 @@ class Apply {
     const buffer = await fileInfo.arrayBuffer();
     fs.writeFileSync(file.path, Buffer.from(buffer), "binary");
     return file;
+  }
+  // insert할 데이터 가져오기
+  async getUpdateData(id, param, newFileInfo, oldFilePath) {
+    const updateData = Object.assign(param, {});
+    updateData["id"] = id;
+    updateData["content"] = this.processContent(param.content);
+    newFileInfo && (updateData["file"] = await this.processFile(newFileInfo));
+    if (oldFilePath) {
+      fs.unlinkSync(oldFilePath);
+      delete updateData.oldFilePath;
+    }
+    return updateData;
   }
 }
 

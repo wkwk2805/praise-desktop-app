@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Modal, Image, Header } from "semantic-ui-react";
+import { Button, Modal, Image } from "semantic-ui-react";
 import DataBase from "../../utility/DataBase";
-import ReactHtmlParser from "react-html-parser";
+import { Link } from "react-router-dom";
 
 const DB = new DataBase();
 const ShowDetail = ({ cont, id }) => {
@@ -19,21 +19,20 @@ const ShowDetail = ({ cont, id }) => {
     >
       <Modal.Header>
         제목 : {info.title}
-        <Button style={{ float: "right" }}>수정</Button>
+        <Link to={`/updateLyrics/${id}`}>
+          <Button style={{ float: "right" }}>수정</Button>
+        </Link>
       </Modal.Header>
       <Modal.Content image>
         <Image
           wrapped
           size="medium"
-          src={(info.file && info.file.path) || "../public/image.png"}
+          src={(info.file && "." + info.file.path) || "../public/image.png"}
         />
         <Modal.Description>
-          {info.content &&
-            ReactHtmlParser(
-              info.content
-                .map(e => e.statement.replace("\n", "<br/>"))
-                .join("<p/><p/>")
-            )}
+          <textarea style={{ width: "300px", height: "300px" }} readOnly>
+            {info.content && info.content.map(e => e.statement).join("\n\n")}
+          </textarea>
         </Modal.Description>
       </Modal.Content>
     </Modal>
