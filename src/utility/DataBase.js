@@ -2,6 +2,7 @@
 import Apply from "./Apply";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
+import fs from "fs";
 
 const adapter = new FileSync("lyrics.json");
 const DB = low(adapter);
@@ -42,11 +43,12 @@ class DataBase {
       return false;
     }
   }
-  delete(id) {
+  delete(id, filePath) {
     try {
       DB.get("lyrics")
         .remove({ id: id })
         .write();
+      filePath && fs.unlinkSync(filePath);
       return true;
     } catch (e) {
       console.error(e);

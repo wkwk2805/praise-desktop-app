@@ -3,6 +3,8 @@ import { Image, Segment, Comment, Header, Button } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { _checked, _unchecked } from "../../store/checked";
 import ShowDetail from "./ShowDetail";
+import DataBase from "../../utility/DataBase";
+const DB = new DataBase();
 
 const LyricsSegment = ({ id, path, title, content }) => {
   const checked = useSelector(state => state.checked);
@@ -16,7 +18,9 @@ const LyricsSegment = ({ id, path, title, content }) => {
   };
   const remove = e => {
     e.stopPropagation();
-    console.log("remove");
+    if (DB.delete(id, path)) {
+      window.location.reload();
+    }
   };
   return (
     <Segment
