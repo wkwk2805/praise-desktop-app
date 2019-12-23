@@ -8,6 +8,8 @@ const DB = new DataBase();
 const SubmitLyrics = ({ history }) => {
   const { id } = useParams();
   const [updateData, setUpdateData] = useState({});
+  const [showFile, setShowFile] = useState(false);
+  const [oldFilePath, setOldFilePath] = useState("");
   useEffect(() => {
     const res = DB.selectDetail(id * 1);
     setUpdateData({
@@ -15,6 +17,7 @@ const SubmitLyrics = ({ history }) => {
       content: res.content.map(e => e.statement).join("\n\n"),
       file: res.file
     });
+    setOldFilePath(res.file && res.file.path);
   }, [id]);
   const settingData = e => {
     setUpdateData({ ...updateData, [e.target.name]: e.target.value });
@@ -31,13 +34,12 @@ const SubmitLyrics = ({ history }) => {
     }
     const file = document.getElementById("file");
     const newFileInfo = file && file.files[0];
-    const oldFilePath = file && file.path;
     if (newFileInfo && newFileInfo.type.indexOf("image") === -1) {
       alertDialog("파일은 이미지파일만 가능해요 ㅠㅠ");
       return;
     }
     // update Data
-    if (await DB.update(id, updateData, newFileInfo, oldFilePath)) {
+    if (await DB.update(id * 1, updateData, newFileInfo, oldFilePath)) {
       alertDialog("데이터가 잘 들어갔어요");
       history.push("/searchList");
     }
@@ -66,10 +68,29 @@ const SubmitLyrics = ({ history }) => {
       </Form.Field>
       <Form.Field>
         {updateData.file ? (
-          <div>
-            {updateData.file.name}
-            <Button>파일수정</Button>
-          </div>
+          showFile ? (
+            <div>
+              <Input type="file" id="file" onChange={settingData} />
+              <Button
+                onClick={() => {
+                  setShowFile(false);
+                }}
+              >
+                취소
+              </Button>
+            </div>
+          ) : (
+            <div>
+              {updateData.file.name}{" "}
+              <Button
+                onClick={() => {
+                  setShowFile(true);
+                }}
+              >
+                파일수정
+              </Button>
+            </div>
+          )
         ) : (
           <Input type="file" id="file" onChange={settingData} />
         )}
