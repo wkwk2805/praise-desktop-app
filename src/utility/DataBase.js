@@ -6,6 +6,7 @@ import fs from "fs";
 
 const adapter = new FileSync("lyrics.json");
 const DB = low(adapter);
+const apply = new Apply(DB);
 
 // 일단생성
 DB.defaults({ lyrics: [] }).write();
@@ -13,7 +14,6 @@ DB.defaults({ lyrics: [] }).write();
 class DataBase {
   async insert(data, fileInfo) {
     try {
-      const apply = new Apply(DB);
       const insertData = await apply.getInsertData(data, fileInfo);
       DB.get("lyrics")
         .push(insertData)
@@ -26,7 +26,6 @@ class DataBase {
   }
   async update(id, data, newFileInfo, oldFilePath) {
     try {
-      const apply = new Apply(DB);
       const updateData = await apply.getUpdateData(
         id,
         data,
@@ -77,6 +76,10 @@ class DataBase {
       .find(e => e.id === id)
       .value();
     return result;
+  }
+  selectSearchList(str) {
+    apply.getSearchList(str);
+    return "";
   }
 }
 

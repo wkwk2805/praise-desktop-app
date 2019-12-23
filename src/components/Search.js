@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { Header } from "semantic-ui-react";
+import DataBase from "../utility/DataBase";
+const DB = new DataBase();
 
 const Search = () => {
   const [windowSize, setWindowSize] = useState(innerHeight / 4);
+  const searchRef = useRef();
   useEffect(() => {
     window.onresize = function() {
       setWindowSize(this.innerHeight / 4);
     };
   }, [windowSize]);
+  const _search = () => {
+    DB.selectSearchList(searchRef.current.value);
+  };
   return (
     <Form
       style={{
@@ -17,9 +23,11 @@ const Search = () => {
     >
       <Form.Field>
         <Header as="h1">찬양을 검색해 주세요</Header>
-        <input placeholder="검색..." />
+        <input placeholder="검색..." ref={searchRef} />
       </Form.Field>
-      <Button type="submit">검색</Button>
+      <Button type="submit" onClick={_search}>
+        검색
+      </Button>
     </Form>
   );
 };
