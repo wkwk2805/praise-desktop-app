@@ -60,25 +60,57 @@ class Apply {
     }
     return updateData;
   }
-  getWords(word) {
-    let words = [];
-    words = word.split(" ");
-    if (words.length > 0) {
-      for (let i in words) {
-        let obj = {};
-        obj.weight = words.length - i;
-        obj.word = words[i];
-        words[i] = obj;
-      }
+  getWords(word) {}
+  getSearchInit() {
+    // 여기를 어찌 처리해야 하는가????? 일단 가중치로 처리하면 될듯한데... ㄷㄷ...
+    const ids = this.DB.get("lyrics")
+      .map(e => e.id)
+      .value();
+    const titles = this.DB.get("lyrics")
+      .map(e => e.title)
+      .value();
+    const contents = this.DB.get("lyrics")
+      .map(e =>
+        e.content
+          .map(e => e.statement)
+          .join("")
+          .replace(/ /g, "")
+          .replace(/\n/g, "")
+      )
+      .value();
+    const resultArr = [];
+    for (let i in ids) {
+      let obj = {
+        id: ids[i],
+        title: titles[i],
+        content: contents[i]
+      };
+      resultArr.push(obj);
     }
-    return words;
+    return resultArr;
   }
   // 검색관련 함수
   getSearchList(word) {
-    let words = this.getWords(word);
-    // 여기를 어찌 처리해야 하는가????? 일단 가중치로 처리하면 될듯한데... ㄷㄷ...
-    this.DB.get("lyrics").map(e => e.title);
-    console.log(words);
+    let words = [];
+    words = word.split(" ");
+    let searchInitList = this.getSearchInit();
+    searchInitList.forEach(item => {
+      let cnt = 0;
+      words.forEach(item2 => {
+        if (item.title.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
+          cnt += 2;
+        }
+        if (item.content.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
+          cnt++;
+        }
+      });
+      item.cnt = cnt;
+    });
+    const resultList = searchInitList
+      .filter(e => e.cnt > 0)
+      .sort((a, b) => b.cnt - a.cnt)
+      .map(e => e.id);
+    return resultList;
   }
 }
 

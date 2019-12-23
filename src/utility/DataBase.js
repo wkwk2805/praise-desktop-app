@@ -77,9 +77,9 @@ class DataBase {
       .value();
     return result;
   }
-  selectSearchList(str) {
-    apply.getSearchList(str);
-    return "";
+  selectSearchList(word) {
+    const resultIdList = apply.getSearchList(word);
+    return this.selectIdList(resultIdList);
   }
 }
 

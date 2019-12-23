@@ -4,8 +4,9 @@ import ViewContent from "./SearchList/ViewContent";
 import SearchForm from "./SearchList/SearchForm";
 import { Grid } from "semantic-ui-react";
 import DataBase from "../utility/DataBase";
+const DB = new DataBase();
 
-const SearchList = () => {
+const SearchList = ({ location }) => {
   const [state, setState] = useState([]);
   const [columns, setColumns] = useState(3);
   const [width, setWidth] = useState(12);
@@ -22,8 +23,8 @@ const SearchList = () => {
     }
   };
   useEffect(() => {
-    const DB = new DataBase();
-    const data = DB.selectAll();
+    const word = new URLSearchParams(location.search).get("word") || false;
+    const data = word ? DB.selectSearchList(word) : DB.selectAll();
     setState(data);
   }, []);
   useEffect(() => {
@@ -34,9 +35,14 @@ const SearchList = () => {
       viewHandler(wid);
     };
   }, []);
+  const _search = word => {
+    console.log("Hello6");
+    setState(DB.selectSearchList(word));
+    console.log("Hello7");
+  };
   return (
     <div>
-      <SearchForm />
+      <SearchForm _search={_search} />
       <Grid columns={4} style={{ marginTop: "20px" }}>
         <Grid.Column width={width}>
           <ViewContent state={state} columns={columns} />
