@@ -60,9 +60,7 @@ class Apply {
     }
     return updateData;
   }
-  getWords(word) {}
   getSearchInit() {
-    // 여기를 어찌 처리해야 하는가????? 일단 가중치로 처리하면 될듯한데... ㄷㄷ...
     const ids = this.DB.get("lyrics")
       .map(e => e.id)
       .value();
