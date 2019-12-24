@@ -20,7 +20,9 @@ const ShowDetail = ({ cont, id }) => {
       <Modal.Header>
         제목 : {info.title}
         <Link to={`/updateLyrics/${id}`}>
-          <Button style={{ float: "right" }}>수정</Button>
+          <Button style={{ float: "right" }} onClick={e => e.stopPropagation()}>
+            수정
+          </Button>
         </Link>
       </Modal.Header>
       <Modal.Content image>

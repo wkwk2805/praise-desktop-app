@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { _checked, _unchecked } from "../../store/checked";
 import ShowDetail from "./ShowDetail";
 import DataBase from "../../utility/DataBase";
+import { confirmDialog, alertDialog } from "../../utility/CustomDialog";
 const DB = new DataBase();
 
 const LyricsSegment = ({ id, path, title, content }) => {
@@ -18,7 +19,9 @@ const LyricsSegment = ({ id, path, title, content }) => {
   };
   const remove = e => {
     e.stopPropagation();
+    if (confirmDialog("정말 삭제하시겠습니까? 복원이 불가능 합니다.")) return;
     if (DB.delete(id, path)) {
+      alertDialog("삭제가 되었습니다.");
       window.location.reload();
     }
   };

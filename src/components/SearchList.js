@@ -36,9 +36,7 @@ const SearchList = ({ location }) => {
     };
   }, []);
   const _search = word => {
-    console.log("Hello6");
     setState(DB.selectSearchList(word));
-    console.log("Hello7");
   };
   return (
     <div>
