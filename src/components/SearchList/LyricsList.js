@@ -3,6 +3,7 @@ import { Segment, List, Button, Header, Grid } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import DataBase from "../../utility/DataBase";
 import { _unchecked } from "../../store/checked";
+import PptSetting from "./PptSetting";
 
 const DB = new DataBase();
 
@@ -39,7 +40,7 @@ const LyricsList = () => {
           <div>
             <Header as="h5">다운로드</Header>
             <Button>악보</Button>
-            <Button>PPT</Button>
+            <PptSetting />
           </div>
         )}
       </Segment>

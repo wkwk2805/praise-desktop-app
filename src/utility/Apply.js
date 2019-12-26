@@ -1,4 +1,5 @@
 import fs from "fs";
+import PptxGenJs from "pptxgenjs";
 
 class Apply {
   constructor(DB) {
@@ -109,6 +110,65 @@ class Apply {
       .sort((a, b) => b.cnt - a.cnt)
       .map(e => e.id);
     return resultList;
+  }
+  // PPT 다운로드 함수
+  downloadPpt(
+    data,
+    fontMainFace = "DX모던고딕RoundB",
+    fontTitleFace = "DX모던고딕RoundB"
+  ) {
+    // data 모양새는 [{id:'0#0#0', title:'요게뱃의 노래', content:"동그란 눈으로\n엄말 보고 있는"},{},{}]
+    data = this.processPptData(data);
+    let pptx = new PptxGenJs();
+    pptx.setTitle("Hello world Title");
+    pptx.setLayout({ name: "A3", width: 16.5, height: 11.7 });
+    for (let item of data) {
+      let slide = pptx.addNewSlide("MASTER");
+      slide.back = "000000";
+      slide.color = "FFFFFF";
+      slide.addText(item.title, {
+        fontSize: 14,
+        h: 0.5,
+        fontFace: fontTitleFace
+      });
+      slide.addText(item.content, {
+        fontFace: fontMainFace,
+        fontSize: 48,
+        align: "center",
+        valign: "top",
+        w: "100%",
+        h: 3,
+        y: 1.8
+      });
+    }
+    return pptx;
+  }
+  processPptData(data) {
+    let titles = data.map(e => e.title);
+    let contents = data.map(e => e.content.map(e => e.statement));
+    let array = [];
+    for (let i in titles) {
+      contents[i].forEach(item => {
+        let content = "";
+        item.split("\n").forEach((jtem, j) => {
+          let obj = { title: titles[i] };
+          if (j % 2 !== 0) {
+            content += jtem;
+            obj.content = content;
+            array.push(obj);
+          } else if (
+            (item.split("\n").length - 1) % 2 === 0 &&
+            j === item.split("\n").length - 1
+          ) {
+            obj.content = content;
+            array.push(obj);
+          } else {
+            content = jtem + "\n";
+          }
+        });
+      });
+    }
+    return array;
   }
 }
 

@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 // 액션 타입 정의
 const CHECKED = "checked/CHOICE";
 const UNCHECKED = "checked/UNCHECKED";
@@ -25,4 +23,4 @@ const checked = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({ checked });
+export default checked;

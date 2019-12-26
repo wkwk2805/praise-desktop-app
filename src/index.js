@@ -6,7 +6,7 @@ import "./layout.css";
 import "@babel/polyfill";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import rootReducer from "./store/checked";
+import rootReducer from "./store/index";
 const store = createStore(rootReducer);
 
 // index.html 에 작성한 ID 값

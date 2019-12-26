@@ -43,9 +43,10 @@ module.exports = {
   },
   resolve: {
     modules: [path.join(__dirname, "src"), "node_modules"],
-    extensions: [".js", ".jsx", ".css", ".scss", ".json"]
+    extensions: [".js", ".jsx", ".css", ".scss", ".json", ".node"]
   },
   target: "node",
+  externals: ["canvas", "utf-8-validate", "bufferutil"],
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html" // 생성한 템플릿 파일
