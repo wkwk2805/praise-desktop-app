@@ -1,5 +1,8 @@
 import fs from "fs";
 import PptxGenJs from "pptxgenjs";
+import { showLoading, hideLoading } from "../store/loading";
+
+const { shell } = window.require("electron").remote;
 
 class Apply {
   constructor(DB) {
@@ -112,11 +115,7 @@ class Apply {
     return resultList;
   }
   // PPT 다운로드 함수
-  downloadPpt(
-    data,
-    fontMainFace = "DX모던고딕RoundB",
-    fontTitleFace = "DX모던고딕RoundB"
-  ) {
+  downloadPpt(data, that, pathFile, dispatch) {
     // data 모양새는 [{id:'0#0#0', title:'요게뱃의 노래', content:"동그란 눈으로\n엄말 보고 있는"},{},{}]
     data = this.processPptData(data);
     let pptx = new PptxGenJs();
@@ -129,10 +128,10 @@ class Apply {
       slide.addText(item.title, {
         fontSize: 14,
         h: 0.5,
-        fontFace: fontTitleFace
+        fontFace: "DX모던고딕RoundB"
       });
       slide.addText(item.content, {
-        fontFace: fontMainFace,
+        fontFace: "DX모던고딕RoundB",
         fontSize: 48,
         align: "center",
         valign: "top",
@@ -141,7 +140,29 @@ class Apply {
         y: 1.8
       });
     }
-    return pptx;
+    this.pptxSave(pptx, that, pathFile, dispatch);
+  }
+  pptxSave(pptx, that, pathFile, dispatch) {
+    dispatch(showLoading());
+    pptx.save(
+      "NODE_PPT",
+      arrayBuffer => {
+        fs.writeFileSync(pathFile, Buffer.from(arrayBuffer), "binary");
+        switch (that) {
+          case "file":
+            shell.openItem(pathFile);
+            dispatch(hideLoading());
+            return;
+          case "dir":
+            shell.showItemInFolder(pathFile);
+            dispatch(hideLoading());
+            return;
+          default:
+            return;
+        }
+      },
+      "arraybuffer"
+    );
   }
   processPptData(data) {
     let titles = data.map(e => e.title);
