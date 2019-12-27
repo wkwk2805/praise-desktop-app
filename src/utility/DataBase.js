@@ -56,15 +56,18 @@ class DataBase {
   }
   selectAll() {
     try {
-      return DB.get("lyrics").value();
+      return DB.get("lyrics")
+        .slice(0, 15)
+        .value();
     } catch (error) {
       console.error(error);
     }
   }
-  selectIdList(arrayId) {
+  selectIdList(arrayId, begin = 0) {
     try {
       const result = DB.get("lyrics")
         .filter(e => arrayId.includes(e.id))
+        .slice(begin, begin + 15)
         .value();
       return result;
     } catch (error) {

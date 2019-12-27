@@ -32,6 +32,16 @@ const SearchList = ({ location }) => {
     const data = word ? DB.selectSearchList(word) : DB.selectAll();
     setState(data);
   }, []);
+  useEffect(() => {
+    window.onscroll = function() {
+      let scrollTop = document.documentElement.scrollTop;
+      let docHeight = document.getElementById("root").clientHeight;
+      let winHeight = window.innerHeight;
+      // 여기에 값을 넣어주면 끝
+      if (scrollTop === docHeight - winHeight) {
+      }
+    };
+  }, []);
   const _search = word => {
     setState(DB.selectSearchList(word));
   };
