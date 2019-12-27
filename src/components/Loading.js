@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Loader } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 
 const Loading = () => {
-  const [styles, setstate] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight
-  });
-  useEffect(() => {
-    window.onresize = function() {
-      setstate({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-    };
-  }, []);
+  const wsize = useSelector(state => state.wsize);
   const isLoading = useSelector(state => state.loading);
   return (
     isLoading && (
-      <div className="loading" style={styles}>
+      <div
+        className="loading"
+        style={{ width: wsize.inWidth, height: wsize.inHeight }}
+      >
         <Loader
           active
           inline="centered"
-          style={{ top: window.outerHeight / 2.5 }}
+          style={{ top: wsize.outHeight / 2.5 }}
         />
       </div>
     )

@@ -1,17 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { Header } from "semantic-ui-react";
-import DataBase from "../utility/DataBase";
-const DB = new DataBase();
+import { useSelector } from "react-redux";
 
 const Search = ({ history }) => {
-  const [windowSize, setWindowSize] = useState(innerHeight / 4);
+  const wsize = useSelector(state => state.wsize);
   const searchRef = useRef();
-  useEffect(() => {
-    window.onresize = function() {
-      setWindowSize(this.innerHeight / 4);
-    };
-  }, [windowSize]);
   const _search = e => {
     e.preventDefault();
     history.push("/searchList?word=" + searchRef.current.value);
@@ -19,7 +13,7 @@ const Search = ({ history }) => {
   return (
     <Form
       style={{
-        marginTop: windowSize
+        marginTop: wsize.inHeight / 3.5
       }}
     >
       <Form.Field>

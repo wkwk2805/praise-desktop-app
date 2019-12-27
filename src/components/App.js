@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "./Search";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Menu from "./Menu";
@@ -7,8 +7,16 @@ import SearchList from "./SearchList";
 import SubmitLyrics from "./SubmitLyrics";
 import UpdateLyrics from "./UpdateLyrics";
 import Loading from "./Loading";
+import { useDispatch } from "react-redux";
+import { changeSize } from "../store/wsize";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      dispatch(changeSize(window));
+    });
+  }, []);
   return (
     <>
       <Loading />
