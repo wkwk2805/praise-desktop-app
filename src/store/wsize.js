@@ -23,7 +23,6 @@ const wsize = (state = initialState, action) => {
         outWidth: win.outerWidth,
         outHeight: win.outerHeight
       };
-      console.log(state);
       return state;
     default:
       return state;

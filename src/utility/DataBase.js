@@ -54,10 +54,11 @@ class DataBase {
       return false;
     }
   }
-  selectAll() {
+  selectAll(begin = 0) {
+    console.log("selectAll", begin);
     try {
       return DB.get("lyrics")
-        .slice(0, 15)
+        .slice(begin, begin + 20)
         .value();
     } catch (error) {
       console.error(error);
@@ -67,7 +68,7 @@ class DataBase {
     try {
       const result = DB.get("lyrics")
         .filter(e => arrayId.includes(e.id))
-        .slice(begin, begin + 15)
+        .slice(begin, begin + 20)
         .value();
       return result;
     } catch (error) {
@@ -80,9 +81,9 @@ class DataBase {
       .value();
     return result;
   }
-  selectSearchList(word) {
+  selectSearchList(word, begin) {
     const resultIdList = apply.getSearchList(word);
-    return this.selectIdList(resultIdList);
+    return this.selectIdList(resultIdList, begin);
   }
 }
 

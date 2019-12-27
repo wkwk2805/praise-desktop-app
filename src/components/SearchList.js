@@ -9,6 +9,9 @@ const DB = new DataBase();
 
 const SearchList = ({ location }) => {
   const wsize = useSelector(state => state.wsize);
+  const [word, setWord] = useState(
+    new URLSearchParams(location.search).get("word") || false
+  );
   const [state, setState] = useState([]);
   const [columns, setColumns] = useState(3);
   const [width, setWidth] = useState(12);
@@ -28,22 +31,25 @@ const SearchList = ({ location }) => {
     viewHandler(wsize.inWidth);
   }, [wsize]);
   useEffect(() => {
-    const word = new URLSearchParams(location.search).get("word") || false;
     const data = word ? DB.selectSearchList(word) : DB.selectAll();
     setState(data);
-  }, []);
+  }, [word]);
   useEffect(() => {
-    window.onscroll = function() {
+    window.onscroll = () => {
       let scrollTop = document.documentElement.scrollTop;
       let docHeight = document.getElementById("root").clientHeight;
       let winHeight = window.innerHeight;
       // 여기에 값을 넣어주면 끝
       if (scrollTop === docHeight - winHeight) {
+        const data = word
+          ? DB.selectSearchList(word, state.length)
+          : DB.selectAll(state.length);
+        setState(state.concat(data));
       }
     };
-  }, []);
+  }, [state]);
   const _search = word => {
-    setState(DB.selectSearchList(word));
+    setWord(word);
   };
   return (
     <div>
