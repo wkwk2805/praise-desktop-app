@@ -4,7 +4,8 @@ import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import fs from "fs";
 
-const adapter = new FileSync("lyrics.json");
+// 경로를 맞추어줌
+const adapter = new FileSync("./resources/app/lyrics.json");
 const DB = low(adapter);
 const apply = new Apply(DB);
 

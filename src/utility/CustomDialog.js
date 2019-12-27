@@ -10,7 +10,7 @@ const CustomDialog = {
       type: "question",
       message,
       defaultId: 2,
-      buttons: ["확인", "취소"]
+      buttons: ["취소", "확인"]
     };
     return dialog.showMessageBoxSync(dialogOptions);
   },

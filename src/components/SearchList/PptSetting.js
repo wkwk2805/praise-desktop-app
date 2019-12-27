@@ -30,8 +30,8 @@ const PptSetting = () => {
   // 열기
   const openFile = () => {
     const data = DB.selectIdList(checked);
-    const pathFile = `${process.cwd()}/ppt/가사모음${new Date().getTime()}.pptx`;
-
+    // 경로를 맞추어줌 (다른방법이 있다면 좋겠다)
+    const pathFile = `${process.cwd()}/resources/app/ppt/가사모음${new Date().getTime()}.pptx`;
     apply.downloadPpt(data, "file", pathFile, dispatch);
   };
   const onChangeDir = e => {
