@@ -27,6 +27,13 @@ const PptSetting = () => {
     fileRef.current.click();
     setThat("dir");
   };
+  // 열기
+  const openFile = () => {
+    const data = DB.selectIdList(checked);
+    const pathFile = `${process.cwd()}/ppt/가사모음${new Date().getTime()}.pptx`;
+
+    apply.downloadPpt(data, "file", pathFile, dispatch);
+  };
   const onChangeDir = e => {
     let file = e.target.files[0];
     let path = file && file.path;
@@ -66,6 +73,7 @@ const PptSetting = () => {
           onChange={e => onChangeDir(e)}
           style={{ display: "none" }}
         />
+        <Button onClick={openFile}>열기</Button>
         <Button onClick={downloadOpenFile}>다운로드 후 열기</Button>
         <Button onClick={downloadOpenDir}>다운로드 후 폴더열기</Button>
       </Modal.Content>
