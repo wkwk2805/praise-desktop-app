@@ -1,4 +1,4 @@
-const { dialog } = window.require("electron").remote;
+const { dialog, BrowserWindow } = window.require("electron").remote;
 
 const CustomDialog = {
   alertDialog: message => {
@@ -8,9 +8,9 @@ const CustomDialog = {
   confirmDialog: message => {
     const dialogOptions = {
       type: "question",
-      message,
-      defaultId: 2,
-      buttons: ["취소", "확인"]
+      buttons: ["네", "아니오"],
+      cancelId: 1,
+      message
     };
     return dialog.showMessageBoxSync(dialogOptions);
   },

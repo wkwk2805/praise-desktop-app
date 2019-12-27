@@ -7,8 +7,16 @@ import "@babel/polyfill";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./store/index";
-
+import fs from "fs";
 const store = createStore(rootReducer);
+const path = "./resources/app/ppt/"; //경로 맞추어줌
+
+if (fs.existsSync(path)) {
+  fs.readdirSync(path).forEach(file => {
+    let curPath = path + file;
+    fs.unlinkSync(curPath);
+  });
+}
 
 // index.html 에 작성한 ID 값
 ReactDOM.render(

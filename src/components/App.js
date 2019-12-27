@@ -9,15 +9,8 @@ import UpdateLyrics from "./UpdateLyrics";
 import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import { changeSize } from "../store/wsize";
-import fs from "fs";
 
 const App = () => {
-  if (fs.existsSync("./ppt/")) {
-    fs.readdirSync("./ppt/").forEach(file => {
-      var curPath = "./ppt/" + file;
-      fs.unlinkSync(curPath);
-    });
-  }
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener("resize", () => {

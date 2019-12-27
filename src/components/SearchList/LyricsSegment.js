@@ -19,9 +19,9 @@ const LyricsSegment = ({ id, path, title, content }) => {
   };
   const remove = e => {
     e.stopPropagation();
-    if (!confirmDialog("정말 삭제하시겠습니까? 복원이 불가능 합니다.")) return;
+    if (confirmDialog("삭제하면 되돌리수 없어요. 그래도 하실래요?")) return;
     if (DB.delete(id, path)) {
-      alertDialog("삭제가 되었습니다.");
+      alertDialog("삭제됬어요");
       window.location.reload();
     }
   };
