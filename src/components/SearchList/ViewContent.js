@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "semantic-ui-react";
 import LyricsSegment from "./LyricsSegment";
 import ReactHtmlParser from "react-html-parser";
+import PublicPath from "../../utility/PublicPath";
 
 const ViewContent = ({ state, columns }) => {
   return (
@@ -13,7 +14,7 @@ const ViewContent = ({ state, columns }) => {
             <Grid.Column key={idx} className="pd5">
               <LyricsSegment
                 id={item.id}
-                path={item.file && item.file.path}
+                path={item.file && PublicPath + item.file.path}
                 title={item.title}
                 content={item.content[0].statement}
               />

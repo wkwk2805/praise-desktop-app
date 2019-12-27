@@ -4,6 +4,7 @@ import Apply from "../../utility/Apply";
 import DataBase from "../../utility/DataBase";
 import { useSelector, useDispatch } from "react-redux";
 import { alertDialog } from "../../utility/CustomDialog";
+import PublicPath from "../../utility/PublicPath";
 
 const DB = new DataBase();
 const apply = new Apply();
@@ -31,7 +32,7 @@ const PptSetting = () => {
   const openFile = () => {
     const data = DB.selectIdList(checked);
     // 경로를 맞추어줌 (다른방법이 있다면 좋겠다)
-    const pathFile = `${process.cwd()}/resources/app/ppt/가사모음${new Date().getTime()}.pptx`;
+    const pathFile = `${PublicPath}/ppt/가사모음${new Date().getTime()}.pptx`;
     apply.downloadPpt(data, "file", pathFile, dispatch);
   };
   const onChangeDir = e => {

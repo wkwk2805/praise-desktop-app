@@ -34,7 +34,7 @@ const LyricsSegment = ({ id, path, title, content }) => {
           : dispatch(_checked(id));
       }}
     >
-      <Image src={path ? "." + path : "../public/image.png"} />
+      <Image src={path ? path : "../public/image.png"} />
       <Comment>
         <Comment.Content>
           <Header as="h4" className="mg5">

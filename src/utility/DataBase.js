@@ -3,9 +3,10 @@ import Apply from "./Apply";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import fs from "fs";
+import PublicPath from "./PublicPath";
 
 // 경로를 맞추어줌
-const adapter = new FileSync("./resources/app/lyrics.json");
+const adapter = new FileSync(`${PublicPath}/lyrics.json`);
 const DB = low(adapter);
 const apply = new Apply(DB);
 
@@ -56,7 +57,6 @@ class DataBase {
     }
   }
   selectAll(begin = 0) {
-    console.log("selectAll", begin);
     try {
       return DB.get("lyrics")
         .slice(begin, begin + 20)

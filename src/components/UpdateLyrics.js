@@ -3,6 +3,7 @@ import { Button, Input, TextArea, Form, Header } from "semantic-ui-react";
 import DataBase from "../utility/DataBase";
 import { alertDialog } from "../utility/CustomDialog";
 import { useParams } from "react-router-dom";
+import PublicPath from "../utility/PublicPath";
 const DB = new DataBase();
 
 const SubmitLyrics = ({ history }) => {
@@ -17,7 +18,7 @@ const SubmitLyrics = ({ history }) => {
       content: res.content.map(e => e.statement).join("\n\n"),
       file: res.file
     });
-    setOldFilePath(res.file && res.file.path);
+    setOldFilePath(res.file && PublicPath + res.file.path);
   }, [id]);
   const settingData = e => {
     setUpdateData({ ...updateData, [e.target.name]: e.target.value });

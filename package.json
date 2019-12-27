@@ -20,7 +20,8 @@
     "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
-    "start": "webpack ./src/index.js && electron ./"
+    "start": "webpack ./src/index.js && electron ./",
+    "build": "webpack ./src/index.js"
   },
   "dependencies": {
     "lowdb": "^1.0.0",
