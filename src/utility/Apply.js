@@ -1,7 +1,7 @@
 import fs from "fs";
 import PptxGenJs from "pptxgenjs";
 import { showLoading, hideLoading } from "../store/loading";
-
+import path from "path";
 const { shell } = window.require("electron").remote;
 
 class Apply {
@@ -49,7 +49,14 @@ class Apply {
       fileInfo.name.replace(/ /gi, "");
     file["size"] = Math.ceil(fileInfo.size / 1024) + "KB";
     const buffer = await fileInfo.arrayBuffer();
-    fs.writeFileSync(file.path, Buffer.from(buffer), "binary");
+    fs.writeFileSync(
+      "./resources/app/public/" +
+        new Date().getTime() +
+        "_" +
+        fileInfo.name.replace(/ /gi, ""),
+      Buffer.from(buffer),
+      "binary"
+    );
     return file;
   }
   // insert할 데이터 가져오기

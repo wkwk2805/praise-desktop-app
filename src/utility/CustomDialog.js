@@ -1,4 +1,4 @@
-const { dialog, BrowserWindow } = window.require("electron").remote;
+const { dialog } = window.require("electron").remote;
 
 const CustomDialog = {
   alertDialog: message => {
