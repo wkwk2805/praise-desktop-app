@@ -21,7 +21,8 @@
   },
   "scripts": {
     "start": "webpack ./src/index.js && electron ./",
-    "build": "webpack ./src/index.js"
+    "build": "webpack ./src/index.js",
+    "dev": "electron ./"
   },
   "dependencies": {
     "lowdb": "^1.0.0",

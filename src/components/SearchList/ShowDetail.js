@@ -29,7 +29,7 @@ const ShowDetail = ({ cont, id }) => {
         <Image
           wrapped
           size="medium"
-          src={(info.file && "." + info.file.path) || "../public/image.png"}
+          src={(info.file && ".." + info.file.path) || "../public/image.png"}
         />
         <Modal.Description>
           <textarea style={{ width: "300px", height: "300px" }} readOnly>
