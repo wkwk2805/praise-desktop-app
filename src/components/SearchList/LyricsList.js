@@ -7,6 +7,7 @@ import PptSetting from "./PptSetting";
 import { alertDialog, confirmDialog } from "../../utility/CustomDialog";
 import fs from "fs";
 import PublicPath from "../../utility/PublicPath";
+import { showLoading, hideLoading } from "../../store/loading";
 
 const { shell } = window.require("electron").remote;
 
@@ -32,6 +33,7 @@ const LyricsList = () => {
     dirRef.current.click();
   };
   const _onChangeFile = e => {
+    dispatch(showLoading());
     let file = e.target.files[0];
     let path = file && file.path;
     path = path && path.split("\\");
@@ -59,6 +61,7 @@ const LyricsList = () => {
     if (!confirmDialog("악보 다운로드 성공, 폴더를 열까요?")) {
       shell.showItemInFolder(pathDir);
     }
+    dispatch(hideLoading());
   };
   return (
     <div className="sticky">

@@ -4,10 +4,12 @@ import ViewContent from "./SearchList/ViewContent";
 import SearchForm from "./SearchList/SearchForm";
 import { Grid } from "semantic-ui-react";
 import DataBase from "../utility/DataBase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeSize } from "../store/wsize";
 const DB = new DataBase();
 
 const SearchList = ({ location }) => {
+  const dispatch = useDispatch();
   const wsize = useSelector(state => state.wsize);
   const [word, setWord] = useState(
     new URLSearchParams(location.search).get("word") || false
@@ -46,6 +48,7 @@ const SearchList = ({ location }) => {
           : DB.selectAll(state.length);
         setState(state.concat(data));
       }
+      dispatch(changeSize(window));
     };
   }, [state]);
   const _search = word => {
