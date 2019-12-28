@@ -45,11 +45,6 @@ const PptSetting = () => {
     const pathFile = path + "\\" + `가사모음${new Date().getTime()}.pptx`;
     apply.downloadPpt(data, that, pathFile, dispatch);
   };
-  const fontStyle = [
-    { key: "123", value: "123" },
-    { key: "456", value: "456" },
-    { key: "789", value: "789" }
-  ];
   return (
     <Modal trigger={<Button color="teal">PPT</Button>}>
       <Modal.Header>PPT설정하기</Modal.Header>

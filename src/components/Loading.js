@@ -9,12 +9,15 @@ const Loading = () => {
     isLoading && (
       <div
         className="loading"
-        style={{ width: wsize.inWidth, height: wsize.inHeight }}
+        style={{
+          width: wsize.inWidth,
+          height: wsize.scrollTop + wsize.inHeight
+        }}
       >
         <Loader
           active
           inline="centered"
-          style={{ top: wsize.outHeight / 2.5 }}
+          style={{ top: wsize.scrollTop + wsize.outHeight / 2.5 }}
         />
       </div>
     )

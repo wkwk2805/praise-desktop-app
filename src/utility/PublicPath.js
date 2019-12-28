@@ -1,1 +1,1 @@
-export default process.cwd(); // + "/resources/app";
+export default process.cwd(); //+ "/resources/app";

@@ -180,7 +180,7 @@ class Apply {
             (item.split("\n").length - 1) % 2 === 0 &&
             j === item.split("\n").length - 1
           ) {
-            obj.content = content;
+            obj.content = jtem;
             array.push(obj);
           } else {
             content = jtem + "\n";
