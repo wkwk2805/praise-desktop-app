@@ -17,6 +17,7 @@ const ViewContent = ({ state, columns }) => {
                 path={item.file && PublicPath + item.file.path}
                 title={item.title}
                 content={item.content[0].statement}
+                code={item.code}
               />
             </Grid.Column>
             {idx % columns === 0 && ReactHtmlParser("</div>")}

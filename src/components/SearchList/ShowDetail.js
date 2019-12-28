@@ -24,6 +24,9 @@ const ShowDetail = ({ cont, id }) => {
             수정
           </Button>
         </Link>
+        <span style={{ float: "right", fontSize: "15px" }}>
+          {info.code && info.code + "코드"}
+        </span>
       </Modal.Header>
       <Modal.Content image>
         <Image

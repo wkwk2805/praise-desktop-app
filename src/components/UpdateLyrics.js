@@ -10,13 +10,14 @@ const SubmitLyrics = ({ history }) => {
   const { id } = useParams();
   const [updateData, setUpdateData] = useState({});
   const [showFile, setShowFile] = useState(false);
-  const [oldFilePath, setOldFilePath] = useState("");
+  const [oldFilePath, setOldFilePath] = useState(false);
   useEffect(() => {
     const res = DB.selectDetail(id * 1);
     setUpdateData({
       title: res.title,
       content: res.content.map(e => e.statement).join("\n\n"),
-      file: res.file
+      file: res.file,
+      code: res.code
     });
     setOldFilePath(res.file && PublicPath + res.file.path);
   }, [id]);
@@ -56,6 +57,20 @@ const SubmitLyrics = ({ history }) => {
           onChange={settingData}
           value={updateData.title}
         />
+        <select
+          name="code"
+          onChange={settingData}
+          value={updateData.code || ""}
+        >
+          <option value="">Code</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+        </select>
       </Form.Field>
       <Form.Field>
         <TextArea

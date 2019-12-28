@@ -57,7 +57,7 @@ class Apply {
     updateData["id"] = id;
     updateData["content"] = this.processContent(param.content);
     newFileInfo && (updateData["file"] = await this.processFile(newFileInfo));
-    if (oldFilePath) {
+    if (newFileInfo && oldFilePath) {
       fs.unlinkSync(oldFilePath);
       delete updateData.oldFilePath;
     }

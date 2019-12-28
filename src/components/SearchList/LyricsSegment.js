@@ -7,7 +7,7 @@ import DataBase from "../../utility/DataBase";
 import { confirmDialog, alertDialog } from "../../utility/CustomDialog";
 const DB = new DataBase();
 
-const LyricsSegment = ({ id, path, title, content }) => {
+const LyricsSegment = ({ id, path, title, content, code }) => {
   const checked = useSelector(state => state.checked);
   const dispatch = useDispatch();
   const shortContent = content => {
@@ -38,7 +38,10 @@ const LyricsSegment = ({ id, path, title, content }) => {
       <Comment>
         <Comment.Content>
           <Header as="h4" className="mg5">
-            {title}
+            {title}{" "}
+            <span style={{ fontSize: "12px", float: "right" }}>
+              {code && code + "코드"}
+            </span>
           </Header>
           <Comment.Text className="mg5">{shortContent(content)}</Comment.Text>
         </Comment.Content>

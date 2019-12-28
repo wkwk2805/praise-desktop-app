@@ -21,8 +21,8 @@ const SubmitLyrics = () => {
     const DB = new DataBase();
     const file = document.getElementsByName("file")[0];
     const fileInfo = file && file.files[0];
-    if(fileInfo && fileInfo.type.indexOf('image') === -1){
-      alertDialog("파일은 이미지파일만 가능해요 ㅠㅠ")
+    if (fileInfo && fileInfo.type.indexOf("image") === -1) {
+      alertDialog("파일은 이미지파일만 가능해요 ㅠㅠ");
       return;
     }
     // insert Data
@@ -41,6 +41,16 @@ const SubmitLyrics = () => {
           placeholder="제목을 입력해 주세요"
           onChange={settingData}
         />
+        <select name="code" onChange={settingData}>
+          <option value="">Code</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+        </select>
       </Form.Field>
       <Form.Field>
         <TextArea
