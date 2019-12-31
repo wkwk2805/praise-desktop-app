@@ -79,12 +79,16 @@ class Apply {
           .replace(/\n/g, "")
       )
       .value();
+    const codes = this.DB.get("lyrics")
+      .map(e => e.code)
+      .value();
     const resultArr = [];
     for (let i in ids) {
       let obj = {
         id: ids[i],
         title: titles[i],
-        content: contents[i]
+        content: contents[i],
+        code: codes[i]
       };
       resultArr.push(obj);
     }
@@ -102,6 +106,9 @@ class Apply {
           cnt += 2;
         }
         if (item.content.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
+          cnt++;
+        }
+        if (item.code.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
           cnt++;
         }
       });
