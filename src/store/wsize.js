@@ -10,7 +10,8 @@ const initialState = {
   inHeight: window.innerHeight,
   outWidth: window.outerWidth,
   outHeight: window.outerHeight,
-  scrollTop: window.document.documentElement.scrollTop
+  scrollTop: window.document.documentElement.scrollTop,
+  docHeight: window.document.getElementById("root").clientHeight
 };
 
 // **** 리듀서 작성
@@ -23,7 +24,8 @@ const wsize = (state = initialState, action) => {
         inHeight: win.innerHeight,
         outWidth: win.outerWidth,
         outHeight: win.outerHeight,
-        scrollTop: win.document.documentElement.scrollTop
+        scrollTop: win.document.documentElement.scrollTop,
+        docHeight: win.document.getElementById("root").clientHeight
       };
       return state;
     default:

@@ -38,11 +38,12 @@ const SearchList = ({ location }) => {
   }, [word]);
   useEffect(() => {
     window.onscroll = () => {
-      let scrollTop = document.documentElement.scrollTop;
-      let docHeight = document.getElementById("root").clientHeight;
-      let winHeight = window.innerHeight;
-      // 여기에 값을 넣어주면 끝
-      if (scrollTop === docHeight - winHeight) {
+      let scrollTop = wsize.scrollTop;
+      let docHeight =
+        wsize.docHeight || document.getElementById("root").clientHeight;
+      let winHeight = wsize.inHeight;
+      console.log(scrollTop, docHeight, winHeight);
+      if (scrollTop + winHeight + 1 >= docHeight) {
         const data = word
           ? DB.selectSearchList(word, state.length)
           : DB.selectAll(state.length);
@@ -50,7 +51,7 @@ const SearchList = ({ location }) => {
       }
       dispatch(changeSize(window));
     };
-  }, [state]);
+  }, [state, wsize]);
   const _search = word => {
     setWord(word);
   };
