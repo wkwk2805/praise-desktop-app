@@ -103,12 +103,15 @@ class Apply {
       let cnt = 0;
       words.forEach(item2 => {
         if (item.title.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
-          cnt += 2;
+          cnt = cnt * 2;
         }
         if (item.content.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
           cnt++;
         }
-        if (item.code.toLowerCase().indexOf(item2.toLowerCase()) !== -1) {
+        if (
+          item.code &&
+          item.code.toLowerCase().indexOf(item2.toLowerCase()) !== -1
+        ) {
           cnt++;
         }
       });
@@ -116,7 +119,9 @@ class Apply {
     });
     const resultList = searchInitList
       .filter(e => e.cnt > 0)
-      .sort((a, b) => b.cnt - a.cnt)
+      .sort((a, b) => {
+        return a.cnt < b.cnt ? 1 : -1;
+      })
       .map(e => e.id);
     return resultList;
   }

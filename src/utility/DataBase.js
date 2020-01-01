@@ -67,11 +67,14 @@ class DataBase {
   }
   selectIdList(arrayId, begin = 0) {
     try {
-      const result = DB.get("lyrics")
-        .filter(e => arrayId.includes(e.id))
-        .slice(begin, begin + 20)
-        .value();
-      return result;
+      const result = [];
+      arrayId.forEach(item => {
+        let res = DB.get("lyrics")
+          .find(e => e.id === item)
+          .value();
+        result.push(res);
+      });
+      return result.slice(begin, begin + 20);
     } catch (error) {
       console.error(error);
     }
