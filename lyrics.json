@@ -1576,6 +1576,265 @@
       "title": "이 땅 위에 오신",
       "id": 77,
       "code": "G"
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "지존하신 주님 이름앞에 \n모두 무릎꿇고 다 경배해"
+        },
+        {
+          "paragraph": 2,
+          "statement": "거룩하신 주님 보좌앞에 \n엎드려 절하세"
+        },
+        {
+          "paragraph": 3,
+          "statement": "예수는 그리스도 예수는 주\n하나님의 영으로 경배드리네"
+        }
+      ],
+      "title": "지존하신 주님 이름앞에",
+      "code": "G",
+      "id": 78
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "지극히 높으신 왕의 위엄이 \n이 땅을 덮네\n겸손한 마음과 열정으로 \n잃은 양을 찾으시는 주님\n \n소멸하는 불 열정의 주님\n십자가 지되 수치를 거절했네\n보라 주가 다스리시네 \n부활하신 주"
+        },
+        {
+          "paragraph": 2,
+          "statement": "주님께 영광 다스리시네 \n하늘 보좌에 앉으신 주님\n주의 나라 임하셨네 이 땅 위에"
+        }
+      ],
+      "title": "주님께 영광",
+      "code": "G",
+      "id": 79
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "생명 주께 있네 \n능력 주께 있네\n소망 주께 있네\n주 안에 있네"
+        },
+        {
+          "paragraph": 2,
+          "statement": "생명 다해 주 찬양하리\n힘을 다해 주 찬양하리\n내 생명 다해 \n내 힘을 다해\n모든 소망 주님께 "
+        },
+        {
+          "paragraph": 3,
+          "statement": "생명 주께 있네 \n능력 주께 있네\n소망 주께 있네\n주 안에 있네 주께"
+        }
+      ],
+      "title": "생명 주께 있네",
+      "code": "G",
+      "id": 80
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "주의 이름 높이며 \n주를 찬양하나이다\n \n나를 구하러 오신 \n주를 기뻐하나이다 "
+        },
+        {
+          "paragraph": 2,
+          "statement": "하늘 영광 버리고 이 땅 위에 \n십자가를 지시고 죄 사했네 "
+        },
+        {
+          "paragraph": 3,
+          "statement": "무덤에서 일어나 하늘로 올리셨네 \n주의 이름 높이리"
+        }
+      ],
+      "title": "주의 이름 높이며 ",
+      "code": "G",
+      "id": 81
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "나의 슬픔을 주가 기쁨으로 \n변화 시키시네 \n잠잠할 수 없네 \n기뻐 춤추며 찬양해"
+        },
+        {
+          "paragraph": 2,
+          "statement": "상처뿐인 내 영혼 위로해 주셨네\n고통 중에 있을 때 주님 평안 주셨네\n주 사랑 어둠 이김을 나는 느끼네\n주의 빛 비춰주시니 \n내 마음 기뻐 주 찬양하네 "
+        },
+        {
+          "paragraph": 3,
+          "statement": "때론 주님 분노 하실 지라도 \n주의 은혜와 사랑\n나의 평생에 내게 임하네"
+        }
+      ],
+      "title": "나의 슬픔을 주가 기쁨으로",
+      "code": "G",
+      "id": 82
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "기뻐하며 왕께 노래 부르리\n소리 높여 할렐루야 부르리 \n주님 앞에 나와 찬양 드리며\n우리 주님과 함께 기뻐하리라"
+        },
+        {
+          "paragraph": 2,
+          "statement": "나의 창조자 나의 구원자\n가장 귀한 나의 예수님 찬양합니다\n나의 치료자 나의 선한 목자 되신 주\n예수 나의 주 찬양하리"
+        }
+      ],
+      "code": "G",
+      "title": "기뻐하며 왕께 노래 부르리",
+      "id": 83
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "오 주여 나의 마음이\n주께로 정해졌으니\n나는 주 찬양하리라"
+        },
+        {
+          "paragraph": 2,
+          "statement": "깨어라 나의 영혼아\n비파와 수금 들어라\n이 새벽에 내가 찬양하리라"
+        },
+        {
+          "paragraph": 3,
+          "statement": "멜로디 멜로디\n예수님은 나의 노래"
+        },
+        {
+          "paragraph": 4,
+          "statement": "예수 예수\n예수님은 나의 노래"
+        }
+      ],
+      "title": "오 주여 나의 마음이",
+      "code": "G",
+      "id": 84
+    },
+    {
+      "title": "호산나",
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "호산나 호산나 \n호산나 높은곳에서\n호산나 호산나 \n호산나 높은곳에서"
+        },
+        {
+          "paragraph": 2,
+          "statement": "주의 이름 높여 다 찬양하라\n귀하신 주 나의 하나님\n주님께 영광 돌리세"
+        }
+      ],
+      "code": "G",
+      "id": 85
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "주의 인자하심이 생명보다 나으므로 \n내 입술은 주를 찬양"
+        },
+        {
+          "paragraph": 2,
+          "statement": "주의 인자하심이 생명보다 나으므로 \n내 입술은 주 찬양"
+        },
+        {
+          "paragraph": 3,
+          "statement": "이러므로 내 평생에 주를 송축하며\n주의 이름으로 인하여 내 손을 들리라"
+        },
+        {
+          "paragraph": 4,
+          "statement": "찬양 찬양 찬양"
+        }
+      ],
+      "title": "주의 인자하심이",
+      "code": "G",
+      "id": 86
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "문들아 머리 들어라 \n들릴지어다 영원한 문들아\n영광의 왕 들어가시도록 \n영광의 왕 들어가신다"
+        },
+        {
+          "paragraph": 2,
+          "statement": "영광의 왕 뉘시뇨 \n강하고 능하신 주로다\n전쟁에 능하신 주시라 \n다 찬양 위대하신 왕"
+        },
+        {
+          "paragraph": 3,
+          "statement": "왕께 만세 왕께 만세 \n당신은 영광의 왕이라 \n다 찬양 위대하신 왕 "
+        }
+      ],
+      "title": "문들아 머리 들어라",
+      "code": "G",
+      "id": 87
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "우리함께 모여 \n주의 이름찬양"
+        },
+        {
+          "paragraph": 2,
+          "statement": "우리함께 모여 \n주를 부르세"
+        },
+        {
+          "paragraph": 3,
+          "statement": "위대한 일 행하셨네 \n우리 소망 충만해"
+        },
+        {
+          "paragraph": 4,
+          "statement": "우리함께 모여 \n주의 이름 찬양"
+        }
+      ],
+      "title": "우리 함께 모여",
+      "code": "G",
+      "id": 88
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "다와서 찬양해\n사랑을 주신 주 찬양해"
+        },
+        {
+          "paragraph": 2,
+          "statement": "사랑의 우리 주님\n생명주셨네"
+        },
+        {
+          "paragraph": 3,
+          "statement": "소리쳐 찬양해\n기쁨을 주시는 우리 왕"
+        },
+        {
+          "paragraph": 4,
+          "statement": "찬양의 제사 드리며\n주님께 경배해"
+        },
+        {
+          "paragraph": 5,
+          "statement": "다와서 찬양해 찬양해 찬양해 주님\n찬양해 주님 우리 왕"
+        }
+      ],
+      "title": "다와서 찬양해",
+      "code": "G",
+      "id": 89
+    },
+    {
+      "content": [
+        {
+          "paragraph": 1,
+          "statement": "왕되신 주께 감사하세 \n그 사랑 영원하리라\n모든 것 위에 뛰어나신주 \n그 사랑 영원하리라\n찬양 찬양"
+        },
+        {
+          "paragraph": 2,
+          "statement": "능력의 손과 펴신팔로 \n그 사랑 영원하리라\n거듭난 영혼들을 위하여\n그 사랑 영원하리라\n찬양 찬양 찬양 찬양"
+        },
+        {
+          "paragraph": 3,
+          "statement": "영원히 신실하신 능력의 하나님\n영원히 함께 하리 \n영원히 영원히 영원히"
+        },
+        {
+          "paragraph": 4,
+          "statement": "해뜨는데서 지는데까지 \n그 사랑 영원하리라\n주 은혜로 우리 걸어가리 \n그 사랑 영원하리라\n찬양 찬양 찬양 찬양"
+        }
+      ],
+      "title": "왕되신 주께 감사하세",
+      "code": "G",
+      "id": 90
     }
   ]
 }
